@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { userContext } from '../Providers/AuthProviders';
 
 const Header = () => {
-    const {user, logOut} = useContext(userContext);
+    const { user, logOut } = useContext(userContext);
 
     const handleSignOut = () => {
         logOut()
-        .then(() => {})
-        .catch(error => {
-            console.log(error.message)
-        })
+            .then(() => { })
+            .catch(error => {
+                console.log(error.message)
+            })
     }
     return (
         <div>
@@ -18,6 +18,10 @@ const Header = () => {
                 <a className="btn btn-ghost normal-case text-xl">Auth Master</a>
                 <div>
                     <Link className="btn btn-ghost normal-case text-lg" to="/">Home</Link>
+                    <Link className="btn btn-ghost normal-case text-lg" to="/orders">Orders</Link>
+                    {
+                        user && <Link className="btn btn-ghost normal-case text-lg" to="/profile">Profile</Link>
+                    }
                     <Link className="btn btn-ghost normal-case text-lg" to="/login">Login</Link>
                     <Link className="btn btn-ghost normal-case text-lg" to="/register">Register</Link>
                 </div>
